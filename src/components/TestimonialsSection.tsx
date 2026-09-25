@@ -5,13 +5,12 @@ interface Testimonial {
   id: string;
   name: string;
   role: string;
+  initials: string;
   rating: number; // 5 for Arjun, Pooja, Rohan; 3 for Sneha
   quote: string;
   tangibleHighlight: string;
   metricLabel: string;
   metricValue: string;
-  imageSrc: string;
-  uploadedFilename: string;
   accentBorder: string;
   badgeColor: string;
 }
@@ -22,9 +21,8 @@ export const TestimonialsSection: React.FC = () => {
       id: 'arjun-mehta',
       name: 'Arjun Mehta',
       role: 'Freelance Copywriter',
+      initials: 'AM',
       rating: 5,
-      imageSrc: '/819358656_1407242830836511_5193208379575227682_n.webp',
-      uploadedFilename: '819358656_1407242830836511_5193208379575227682_n.webp',
       quote:
         'Before Client Ready, my outreach was completely random. Using the HRPA pitch structure, I closed two international retainer clients worth $2,400 within 35 days. No fluff, just practical execution.',
       tangibleHighlight: '2 International Retainers ($2,400 Total)',
@@ -37,9 +35,8 @@ export const TestimonialsSection: React.FC = () => {
       id: 'pooja-nambiar',
       name: 'Pooja Nambiar',
       role: 'Freelance UX Designer',
+      initials: 'PN',
       rating: 5,
-      imageSrc: '/819276294_1806945313905293_1280052080579656977_n.webp',
-      uploadedFilename: '819276294_1806945313905293_1280052080579656977_n.webp',
       quote:
         'Clients used to ghost me the moment I shared my rates. The value-anchoring calculator and proposal framework helped me close my highest-ticket UX audit without bargaining.',
       tangibleHighlight: 'Highest-Ticket UX Audit (Zero Bargaining)',
@@ -52,9 +49,8 @@ export const TestimonialsSection: React.FC = () => {
       id: 'rohan-deshmukh',
       name: 'Rohan Deshmukh',
       role: 'Freelance Content Strategist',
+      initials: 'RD',
       rating: 5,
-      imageSrc: '/820109677_1090755666760551_8071228421202588756_n.webp',
-      uploadedFilename: '820109677_1090755666760551_8071228421202588756_n.webp',
       quote:
         'The contract and retainer templates alone paid for the entire guide on my very first deal. It completely eliminated scope creep and payment delays from my client workflow.',
       tangibleHighlight: 'Scope Creep & Delays Fully Eliminated',
@@ -67,9 +63,8 @@ export const TestimonialsSection: React.FC = () => {
       id: 'sneha-kapoor',
       name: 'Sneha Kapoor',
       role: 'Freelance Social Media Manager',
+      initials: 'SK',
       rating: 3, // EXPLICIT REQUIREMENT: 3 stars (★★★☆☆)
-      imageSrc: '/822462038_1369308445375399_7352409621348121728_n.webp',
-      uploadedFilename: '822462038_1369308445375399_7352409621348121728_n.webp',
       quote:
         'I went from charging entry-level hourly rates to locking in three monthly retainers. The 30-day implementation roadmap removed all guesswork from client acquisition.',
       tangibleHighlight: '3 Ongoing Monthly Brand Retainers Locked',
@@ -143,26 +138,13 @@ export const TestimonialsSection: React.FC = () => {
                   />
 
                   <div>
-                    {/* Top Row: Circular Avatar (48x48, rounded-full, object-cover) + Name/Role + Star Rating Visual */}
+                    {/* Top Row: Clean Initials Monogram Avatar + Name/Role + Star Rating Visual */}
                     <div className="flex items-start justify-between gap-4 mb-5">
                       <div className="flex items-center gap-3.5 min-w-0">
                         
-                        {/* Perfectly round avatar (rounded-full, object-cover, standard 48x48) */}
-                        <div className="relative shrink-0 w-12 h-12 w-[48px] h-[48px]">
-                          <img
-                            src={item.imageSrc}
-                            alt={item.name}
-                            width={48}
-                            height={48}
-                            data-image={item.uploadedFilename}
-                            className="w-12 h-12 w-[48px] h-[48px] rounded-full object-cover object-center ring-2 ring-[#D4AF37]/60 shadow-md shrink-0 block"
-                            onError={(e) => {
-                              const target = e.currentTarget;
-                              if (!target.src.includes('/images/')) {
-                                target.src = `/images/${item.uploadedFilename}`;
-                              }
-                            }}
-                          />
+                        {/* Distinctive Monogram Initials Badge */}
+                        <div className="relative shrink-0 w-12 h-12 w-[48px] h-[48px] rounded-full bg-gradient-to-br from-[#243345] via-[#17222F] to-[#0D141E] ring-2 ring-[#D4AF37]/60 shadow-md flex items-center justify-center text-[#D4AF37] font-serif font-bold text-base select-none">
+                          <span>{item.initials}</span>
                         </div>
 
                         <div className="min-w-0">
